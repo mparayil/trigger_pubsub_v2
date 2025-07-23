@@ -57,7 +57,7 @@
 | `topic_id`               |  str  |   True   |   None  | GCP PubSub Topic name to subscribe to                                                                                                                                  |
 | `subscription_id`        |  str  |   True   |   None  | GCP PubSub subscription_id                                                                                                                                             |
 | `timeout`                | float |   False  |   None  | Timeout (in seconds) of the pubsub subscription receiver                                                                                                               |
-| `airflow_url`            |  str  |   True   |   None  | Airflow url endpoint used to trigger the DAG. (i.e. http://dev-external-sales.airflow.colpal.cloud,  http://dev-media.airflow.colpal.cloud/home)                       |
+| `airflow_url`            |  str  |   True   |   None  | Airflow url endpoint used to trigger the DAG.     |
 | `dag_id`                 |  str  |   True   |   None  | DAG id of the dag to be triggered that contains the GCS bucket object blob path with an OBJECT_FINALIZE event                                                          |
 | `run_stable_airflow` |  bool |   False   |  False  | Boolean flag to pass whether using stable vs experimental airflow REST API endpoint                                                                                    |
 | `object_string_pattern`  |  str  |   False  |   None  | Changed object path or filename string pattern or regex pattern to check to determine whether to trigger                                                               |
@@ -111,12 +111,6 @@ regex_lookup_json_string = '''
 
 **NOTE**: When passing arguments `object_string_pattern` **or** `regex_json_string` into the DAG, not both. If both are passed into the container, the dag_id(s) within the regex_json_string will only be triggered and the object_string_pattern will be ignored.
 
-## References:
-
-Examples of this container usage can be found in **cp-saa-media** project with two dag files capturing this functionality:
-* [pubsub_trigger_example_dag.py](https://github.com/colpal/cp-saa-media/blob/develop/dags/pubsub_trigger_example_dag.py)
-* [pubsub_trigger_example_workflow_dag.py](https://github.com/colpal/cp-saa-media/blob/develop/dags/pubsub_trigger_example_workflow_dag.py)
-&nbsp;
 
 More information on pubsub functionality, conceptual design, and use cases can be found in the GCP [docs](https://cloud.google.com/pubsub/docs/pull) and [code samples](https://cloud.google.com/pubsub/docs/samples)
 
